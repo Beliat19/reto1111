@@ -1,0 +1,24 @@
+<h1>RETO 1: Sumando y restando</h1>
+
+<div class="formulario">
+  <label for="num1">Numero 1:</label>
+  <input id="num1" type="number" [(ngModel)]="num1" placeholder="Ingrese el primer numero">
+
+  <br><br>
+
+  <label for="num2">Numero 2:</label>
+  <input id="num2" type="number" [(ngModel)]="num2" placeholder="Ingrese el segundo numero">
+
+  <br><br>
+
+  <button (click)="sumar()">Sumar</button>
+  <button (click)="restar()">Restar</button>
+</div>
+
+@if (mensajeError) {
+  <p>{{ mensajeError }}</p>
+}
+
+@if (resultado !== null) {
+  <h2>Resultado: {{ resultado }}</h2>
+}

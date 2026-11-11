@@ -1,0 +1,38 @@
+<h1>RETO 3: Registro de Estudiantes</h1>
+
+<div class="formulario">
+  <label for="nombre">Nombre:</label>
+  <input id="nombre" [(ngModel)]="nombre" placeholder="Nombre del estudiante">
+
+  <br><br>
+
+  <label for="programa">Programa:</label>
+  <input id="programa" [(ngModel)]="programa" placeholder="Programa (ej. ADSO)">
+
+  <br><br>
+
+  <label for="edad">Edad:</label>
+  <input id="edad" type="number" [(ngModel)]="edad" min="1" placeholder="Edad">
+
+  <br><br>
+
+  <button (click)="registrar()">Registrar</button>
+</div>
+
+<!-- Aviso en caso de datos incompletos-->
+@if (mensajeError) {
+  <p style="color: red;">{{ mensajeError }}</p>
+}
+
+<h2>Estudiantes Registrados</h2>
+<ul>
+  @for (estudiante of estudiantes; track estudiante.id) {
+    <li>
+      <strong>{{ estudiante.nombre }}</strong> - 
+      Programa: {{ estudiante.programa }} - 
+      Edad: {{ estudiante.edad }} años
+    </li>
+  } @empty {
+    <li>No hay estudiantes registrados todavía.</li>
+  }
+</ul>

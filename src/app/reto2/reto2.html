@@ -1,0 +1,16 @@
+<h1>RETO2: Catalogo de Productos</h1>
+
+<ul>
+  @for (producto of productos; track producto.id) {
+    <li>
+      {{ producto.nombre }} -
+      Categoría: {{ producto.categoria }} - 
+      Precio: ${{ producto.precio }} 
+
+      <!-- Mensaje por si supera los $100.000 -->
+      @if (producto.precio > 100000) {
+        <span style="color: crimson; font-weight: bold;"> - Producto costoso!</span>
+      }
+    </li>
+  }
+</ul>

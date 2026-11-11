@@ -1,0 +1,29 @@
+<h1>RETO 4: Semaforo Interactivo</h1>
+
+<!-- Botones de control -->
+<button (click)="luz = 'rojo'">Rojo</button>
+<button (click)="luz = 'amarillo'">Amarillo</button>
+<button (click)="luz = 'verde'">Verde</button>
+
+<br><br>
+
+<!-- Circulo que cambia de color dinamicamente -->
+<div [style.background-color]="luz" 
+     style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid #333; margin-bottom: 10px;">
+</div>
+
+<!-- Mensaje condicional con @switch -->
+@switch (luz) {
+  @case ('rojo') {
+    <p style="color: red; font-weight: bold;">Detenerse</p>
+  }
+  @case ('amarillo') {
+    <p style="color: goldenrod; font-weight: bold;">Precaucion</p>
+  }
+  @case ('verde') {
+    <p style="color: green; font-weight: bold;">Avanzar</p>
+  }
+  @default {
+    <p>Seleccione una opción del semaforo.</p>
+  }
+}

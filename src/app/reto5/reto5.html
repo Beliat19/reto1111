@@ -1,0 +1,39 @@
+<h1>Reto 4: Control de inventario basico</h1>
+
+<div class="formulario">
+  <label for="nombre">Nombre del producto:</label>
+  <input id="nombre" [(ngModel)]="nombre" placeholder="Ej. Lapiz">
+
+  <br><br>
+
+  <label for="cantidad">Cantidad:</label>
+  <input id="cantidad" type="number" [(ngModel)]="cantidad" min="0" placeholder="0">
+
+  <br><br>
+
+  <label for="precio">Precio unitario:</label>
+  <input id="precio" type="number" [(ngModel)]="precio" min="0" placeholder="0">
+
+  <br><br>
+
+  <button (click)="agregarProducto()">Agregar producto</button>
+</div>
+
+@if (mensajeError) {
+  <p style="color: red;">{{ mensajeError }}</p>
+}
+
+<h2>Lista de inventario</h2>
+<ul>
+  @for (prod of productos; track prod.id) {
+    <li>
+      <strong>{{ prod.nombre }}</strong> - 
+      Cantidad: {{ prod.cantidad }} - 
+      Precio unitario: ${{ prod.precio }} - 
+      <strong>Total: ${{ prod.cantidad * prod.precio }}</strong>
+      <button (click)="eliminar(prod.id)">Eliminar</button>
+    </li>
+  } @empty {
+    <li>No hay productos en el inventario.</li>
+  }
+</ul>
